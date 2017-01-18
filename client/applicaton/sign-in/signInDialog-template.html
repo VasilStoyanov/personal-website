@@ -1,0 +1,54 @@
+<md-dialog flex="65" flex-xs="90">
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Sign in</h2>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <md-tabs md-dynamic-height>
+
+      <md-tab label="New account">
+        <md-content class="md-padding">
+
+          <md-input-container class="md-block">
+            <label flex>Username</label>
+            <input ng-model="vm.userCredentials.name">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label flex>Password</label>
+            <input ng-model="vm.userCredentials.password" type="password">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label flex>Repeat password</label>
+            <input ng-model="vm.userCredentials.repPassword" type="password">
+          </md-input-container>
+
+        </md-content>
+      </md-tab>
+
+      <md-tab label="Login">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Tab One</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis
+            nec, feugiat ultricies mi.</p>
+        </md-content>
+      </md-tab>
+
+    </md-tabs>
+  </md-dialog-content>
+
+  <md-dialog-actions>
+    <md-button data-ng-click="" class="md-button md-raised md-warn md-hue-2" aria-label="Cancel">
+      Cancel
+    </md-button>
+
+    <md-button data-ng-click="vm.createNewUser()" class="md-button md-raised md-primary" aria-label="Register">
+      Register
+    </md-button>
+  </md-dialog-actions>
+
+</md-dialog>

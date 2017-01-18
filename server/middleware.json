@@ -1,0 +1,137 @@
+{
+  "initial:before": {
+    "loopback#favicon": {}
+  },
+  "initial": {
+    "compression": {},
+    "cors": {
+      "params": {
+        "origin": true,
+        "credentials": true,
+        "maxAge": 86400
+      }
+    },
+    "helmet#xssFilter": {},
+    "helmet#frameguard": {
+      "params": [
+        "deny"
+      ]
+    },
+    "helmet#hsts": {
+      "params": {
+        "maxAge": 0,
+        "includeSubdomains": true
+      }
+    },
+    "helmet#hidePoweredBy": {},
+    "helmet#ieNoOpen": {},
+    "helmet#noSniff": {},
+    "helmet#noCache": {
+      "enabled": false
+    }
+  },
+  "session": {},
+  "auth": {},
+  "parse": {},
+  "routes": {
+    "loopback#rest": {
+      "paths": [
+        "${restApiRoot}"
+      ]
+    }
+  },
+  "files": {
+    "loopback#static": [
+      {
+        "paths": [
+          "/"
+        ],
+        "params": "$!../client"
+      },
+      {
+        "paths": [
+          "/libs"
+        ],
+        "params": "$!../node_modules/jquery/dist/"
+      },
+      {
+        "paths": [
+          "/libs"
+        ],
+        "params": "$!../node_modules/angular/"
+      },
+      {
+        "paths": [
+          "/libs"
+        ],
+        "params": "$!../node_modules/angular-route/"
+      },
+      {
+        "paths": [
+          "/libs"
+        ],
+        "params": "$!../node_modules/angular-resource/"
+      },
+      {
+        "paths": [
+          "/libs"
+        ],
+        "params": "$!../node_modules/angular-material/"
+      },
+      {
+        "paths": [
+          "/libs"
+        ],
+        "params": "$!../node_modules/angular-aria/"
+      },
+      {
+        "paths": [
+          "/libs"
+        ],
+        "params": "$!../node_modules/angular-animate/"
+      },
+      {
+        "paths": [
+          "/files"
+        ],
+        "params": "$!../client/applicaton/"
+      },
+      {
+        "paths": [
+          "/files/base"
+        ],
+        "params": "$!../client/applicaton/base/"
+      },
+      {
+        "paths": [
+          "/files/services"
+        ],
+        "params": "$!../client/applicaton/loopback/"
+      },
+      {
+        "paths": [
+          "/files/home"
+        ],
+        "params": "$!../client/applicaton/home/"
+      },
+      {
+        "paths": [
+          "/files/config"
+        ],
+        "params": "$!../client/applicaton/configuration/"
+      },
+      {
+        "paths": [
+          "/files/sing"
+        ],
+        "params": "$!../client/applicaton/sign-in/"
+      }
+    ]
+  },
+  "final": {
+    "./middleware/url-not-found-handler": {}
+  },
+  "final:after": {
+    "strong-error-handler": {}
+  }
+}

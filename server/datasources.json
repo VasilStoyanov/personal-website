@@ -1,0 +1,11 @@
+{
+  "personalWebsite": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "personalWebsite",
+    "name": "personalWebsite",
+    "connector": "mongodb",
+    "username": "vasil",
+    "password": "12personalwebsite34"
+  }
+}

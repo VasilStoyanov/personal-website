@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Vasil Stoyanov | Official website</title>
+
+    <script src="libs/jquery.js"></script>
+    <script src="libs/angular.js"></script>
+    <script src="libs/angular-route.js"></script>
+    <script src="libs/angular-resource.js"></script>
+    <script src="libs/angular-aria.js"></script>
+    <script src="libs/angular-animate.js"></script>
+    <script src="libs/angular-material.js"></script>
+
+    <script src="files/main.js"></script>
+    <script src="files/configuration/config.js"></script>
+
+    <script src="files/loopback/lb-services.js"></script>
+
+    <script src="files/base/base-controller.js"></script>
+    <script src="files/home/home-controller.js"></script>
+    <script src="files/sign-in/signInDialog-controller.js"></script>
+
+    <link rel="stylesheet" href="libs/angular-material.css" media="screen" charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body data-ng-app="PersonalWebsite" data-ng-cloak="true" data-ng-controller="BaseController as base">
+
+    <section layout layout-fill>
+
+      <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+        <md-toolbar class="md-theme-indigo md-hue-2">
+          <h1 class="md-toolbar-tools">Hello, Vasil Stoyanov</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+          <md-button class="md-primary">
+            Close Sidenav Left
+          </md-button>
+          <p hide show-gt-md>
+            This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
+          </p>
+        </md-content>
+      </md-sidenav>
+
+      <md-content flex>
+
+        <md-toolbar layout="row" flex>
+          <div class="md-toolbar-tools">
+            <!-- Left positioned elements -->
+            <md-button hide-gt-md data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Settings">
+              <i class="material-icons">&#xE5D2;</i>
+            </md-button>
+
+            <span flex></span>
+            <!-- Right positioned elements -->
+            <div data-ng-if="base.hasUserLoggedIn()" layout="row" layout-align="start center">
+              <md-button data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Messages">
+                <i class="material-icons">&#xE0C9;</i>
+              </md-button>
+
+              <md-button data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Notifications">
+                <i class="material-icons">&#xE7F5;</i>
+              </md-button>
+
+              <i class="material-icons" style="font-size: 48px;">&#xE853;</i>
+            </div>
+
+            <div data-ng-hide="base.toggleLeftSideNav()">
+              <md-button data-ng-click="base.userSignInDialog()" class="md-raised md-accent" aria-label="Login">
+                Sign in
+              </md-button>
+            </div>
+
+          </div>
+        </md-toolbar>
+
+        <md-content data-ng-view></md-content>
+        <md-fab-speed-dial md-direction="up" class="md-fab-bottom-right">
+          <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-warn">
+              <md-icon class="material-icons">menu</md-icon>
+            </md-button>
+          </md-fab-trigger>
+
+          <md-fab-actions>
+            <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+              <md-icon aria-label="Twitter">loyalty</md-icon>
+            </md-button>
+            <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+              <md-icon aria-label="Facebook">info</md-icon>
+            </md-button>
+            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+              <md-icon aria-label="Google Hangout">face</md-icon>
+            </md-button>
+          </md-fab-actions>
+
+        </md-fab-speed-dial>
+      </md-content>
+
+    </section>
+  </body>
+</html>
