@@ -46,7 +46,19 @@
         "paths": [
           "/"
         ],
-        "params": "$!../client"
+        "params": "$!../client/"
+      },
+      {
+        "paths": [
+          "/css"
+        ],
+        "params": "$!../client/css/"
+      },
+      {
+        "paths": [
+          "/images"
+        ],
+        "params": "$!../client/images/"
       },
       {
         "paths": [

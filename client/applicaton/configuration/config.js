@@ -29,7 +29,7 @@
 
     // Configure theming
     $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
+      .primaryPalette('grey')
       .accentPalette('orange');
 
     // Use a custom auth header instead of the default 'Authorization'

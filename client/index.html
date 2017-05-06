@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <base href="/">
     <meta charset="utf-8">
@@ -23,82 +24,103 @@
     <script src="files/home/home-controller.js"></script>
     <script src="files/sign-in/signInDialog-controller.js"></script>
 
+    <!-- Libs -->
     <link rel="stylesheet" href="libs/angular-material.css" media="screen" charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/left-sidenav.css" rel="stylesheet">
+
   </head>
-  <body data-ng-app="PersonalWebsite" data-ng-cloak="true" data-ng-controller="BaseController as base">
 
-    <section layout layout-fill>
+  <body data-ng-app="PersonalWebsite" data-ng-cloak="true" data-ng-controller="BaseController as base" layout>
+    <md-sidenav id="left-sidenav" layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="10">
 
-      <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
-        <md-toolbar class="md-theme-indigo md-hue-2">
-          <h1 class="md-toolbar-tools">Hello, Vasil Stoyanov</h1>
-        </md-toolbar>
-        <md-content layout-padding>
-          <md-button class="md-primary">
-            Close Sidenav Left
+      <div class="layer"></div>
+
+      <div flex="20" layout="column" class="left-sidenav-toolbar" layout-align="center center">
+        <img src="/images/user_default.png" flex="55" layout-margin alt="default_avatar">
+        <h3>Vasil Stoyanov</h3>
+      </div>
+
+      <div flex="80" layout="column" layout-padding class="nav-content">
+        <md-button layout="row" layout-margin class="md-primary selected" md-ink-ripple="false">
+          <i class="material-icons">&#xE88A;</i> Home
+        </md-button>
+        <md-button layout="row" layout-margin class="md-primary" md-ink-ripple="false">
+          <i class="material-icons">&#xE815;</i> My biography
+        </md-button>
+        <md-button layout="row" layout-margin class="md-primary" md-ink-ripple="false">
+          <i class="material-icons">&#xE86F;</i> Programming
+        </md-button>
+        <md-button layout="row" layout-margin class="md-primary" md-ink-ripple="false">
+          <i class="material-icons">contacts</i> Contacts
+        </md-button>
+      </div>
+
+      <div class="left-sidenav-background"></div>
+
+    </md-sidenav>
+
+    <md-content flex>
+
+      <md-toolbar layout="row" flex class="md-hue-1">
+        <div class="md-toolbar-tools">
+          <!-- Left positioned elements -->
+          <md-button hide-gt-md data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Settings">
+            <i class="material-icons">&#xE5D2;</i>
           </md-button>
-          <p hide show-gt-md>
-            This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
-          </p>
-        </md-content>
-      </md-sidenav>
 
-      <md-content flex>
-
-        <md-toolbar layout="row" flex>
-          <div class="md-toolbar-tools">
-            <!-- Left positioned elements -->
-            <md-button hide-gt-md data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Settings">
-              <i class="material-icons">&#xE5D2;</i>
+          <span flex></span>
+          <!-- Right positioned elements -->
+          <div data-ng-if="base.hasUserLoggedIn()" layout="row" layout-align="start center">
+            <md-button data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Messages">
+              <i class="material-icons">&#xE0C9;</i>
             </md-button>
 
-            <span flex></span>
-            <!-- Right positioned elements -->
-            <div data-ng-if="base.hasUserLoggedIn()" layout="row" layout-align="start center">
-              <md-button data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Messages">
-                <i class="material-icons">&#xE0C9;</i>
-              </md-button>
+            <md-button data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Notifications">
+              <i class="material-icons">&#xE7F5;</i>
+            </md-button>
 
-              <md-button data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Notifications">
-                <i class="material-icons">&#xE7F5;</i>
-              </md-button>
-
-              <i class="material-icons" style="font-size: 48px;">&#xE853;</i>
-            </div>
-
-            <div data-ng-hide="base.toggleLeftSideNav()">
-              <md-button data-ng-click="base.userSignInDialog()" class="md-raised md-accent" aria-label="Login">
-                Sign in
-              </md-button>
-            </div>
-
+            <i class="material-icons" style="font-size: 48px;">&#xE853;</i>
           </div>
-        </md-toolbar>
 
-        <md-content data-ng-view></md-content>
-        <md-fab-speed-dial md-direction="up" class="md-fab-bottom-right">
-          <md-fab-trigger>
-            <md-button aria-label="menu" class="md-fab md-warn">
-              <md-icon class="material-icons">menu</md-icon>
+          <div data-ng-hide="base.toggleLeftSideNav()">
+            <md-button data-ng-click="base.userSignInDialog()" class="md-raised md-accent" aria-label="Login">
+              Sign in
             </md-button>
-          </md-fab-trigger>
+          </div>
 
-          <md-fab-actions>
-            <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
-              <md-icon aria-label="Twitter">loyalty</md-icon>
-            </md-button>
-            <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
-              <md-icon aria-label="Facebook">info</md-icon>
-            </md-button>
-            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
-              <md-icon aria-label="Google Hangout">face</md-icon>
-            </md-button>
-          </md-fab-actions>
+        </div>
+      </md-toolbar>
 
-        </md-fab-speed-dial>
-      </md-content>
+      <md-content data-ng-view></md-content>
 
-    </section>
+      <md-fab-speed-dial md-direction="up" class="md-fab-bottom-right">
+        <md-fab-trigger>
+          <md-button aria-label="menu" class="md-fab md-warn">
+            <md-icon class="material-icons">menu</md-icon>
+          </md-button>
+        </md-fab-trigger>
+
+        <md-fab-actions>
+          <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+            <md-icon aria-label="Twitter">loyalty</md-icon>
+          </md-button>
+          <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+            <md-icon aria-label="Facebook">info</md-icon>
+          </md-button>
+          <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+            <md-icon aria-label="Google Hangout">face</md-icon>
+          </md-button>
+        </md-fab-actions>
+
+      </md-fab-speed-dial>
+    </md-content>
+
+
   </body>
+
 </html>
