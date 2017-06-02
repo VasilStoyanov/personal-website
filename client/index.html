@@ -16,13 +16,14 @@
     <script src="libs/angular-material.js"></script>
 
     <script src="files/main.js"></script>
+    <script src="files/constants.js"></script>
     <script src="files/configuration/config.js"></script>
 
     <script src="files/loopback/lb-services.js"></script>
 
     <script src="files/base/base-controller.js"></script>
     <script src="files/home/home-controller.js"></script>
-    <script src="files/sign-in/signInDialog-controller.js"></script>
+    <script src="files/sign-in/signIn-controller.js"></script>
 
     <!-- Libs -->
     <link rel="stylesheet" href="libs/angular-material.css" media="screen" charset="utf-8">
@@ -40,23 +41,24 @@
 
       <div class="layer"></div>
 
+      <div flex="5" class="logo" layout="row" layout-align="center center">
+        <h1>VasilStoyanov.com</h1>
+      </div>
       <div flex="25" layout="column" class="left-sidenav-toolbar" layout-align="center center">
-        <img src="/images/user_default.png" flex="55" layout-margin alt="default_avatar">
-        <h3>Vasil Stoyanov</h3>
+        <img src="/images/user_default.png" flex="40" layout-margin alt="default_avatar">
+        <h3 flex="40">Current user</h3>
       </div>
 
-      <div flex="75" layout="column" layout-padding class="nav-content">
-        <md-button layout="row" layout-margin class="md-primary selected" md-ink-ripple="false">
-          <i class="material-icons">&#xE88A;</i> Home
-        </md-button>
-        <md-button layout="row" layout-margin class="md-primary" md-ink-ripple="false">
-          <i class="material-icons">&#xE815;</i> My biography
-        </md-button>
-        <md-button layout="row" layout-margin class="md-primary" md-ink-ripple="false">
-          <i class="material-icons">&#xE86F;</i> Programming
-        </md-button>
-        <md-button layout="row" layout-margin class="md-primary" md-ink-ripple="false">
-          <i class="material-icons">contacts</i> Contacts
+      <!-- Main navigation -->
+      <div flex="55" layout="column" layout-padding class="nav-content">
+        <md-button data-ng-repeat="navButton in base.navButtons"
+                  data-ng-click="base.navigateTo(navButton.navigationPath, navButton.name)"
+                  layout="row"
+                  layout-margin
+                  class="md-primary"
+                  data-ng-class="{'selected' : base.selectedButton == navButton.name}"
+                  md-ink-ripple="false">
+        <i class="material-icons">{{navButton.iconName}}</i> {{navButton.text}}
         </md-button>
       </div>
 
@@ -64,7 +66,7 @@
 
     </md-sidenav>
 
-    <md-content flex>
+    <md-content flex md-colors="{background: 'primary-200'}">
 
       <md-toolbar layout="row" flex class="md-hue-1">
         <div class="md-toolbar-tools">
@@ -75,22 +77,12 @@
 
           <span flex></span>
           <!-- Right positioned elements -->
-          <div data-ng-if="base.hasUserLoggedIn()" layout="row" layout-align="start center">
-            <md-button data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Messages">
-              <i class="material-icons">&#xE0C9;</i>
-            </md-button>
-
+          <div layout="row" layout-align="start center">
             <md-button data-ng-click="base.toggleLeftSideNav()" class="md-icon-button" aria-label="Notifications">
-              <i class="material-icons">&#xE7F5;</i>
+              <i class="material-icons">notifications_none</i>
             </md-button>
 
-            <i class="material-icons" style="font-size: 48px;">&#xE853;</i>
-          </div>
-
-          <div data-ng-hide="base.toggleLeftSideNav()">
-            <md-button data-ng-click="base.userSignInDialog()" class="md-raised md-accent" aria-label="Login">
-              Sign in
-            </md-button>
+            <i class="material-icons" style="font-size: 48px; color: grey;">&#xE853;</i>
           </div>
 
         </div>

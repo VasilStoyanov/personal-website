@@ -3,22 +3,24 @@
 
   configureApplication.$inject = [
     '$routeProvider', '$locationProvider', '$mdThemingProvider',
-    'LoopBackResourceProvider'
+    'LoopBackResourceProvider', "CONSTANTS"
   ];
 
   function configureApplication(
     $routeProvider, $locationProvider, $mdThemingProvider,
-    LoopBackResourceProvider
+    LoopBackResourceProvider, CONSTANTS
   ) {
-    var CONTROLLER_AS_VIEW_MODEL = 'vm';
-    var BASE_URL = 'http://localhost:3000';
-
     // Configure routes
     $routeProvider
       .when('/', {
-        templateUrl: 'files/home/home-template.html',
-        controller: 'HomeController',
-        controllerAs: 'home'
+        templateUrl: CONSTANTS.HOME_TEMPLATE_PATH,
+        controller: CONSTANTS.HOME_CONTROLLER,
+        controllerAs: CONSTANTS.HOME_CONTROLLER_AS_VIEW_MODEL
+      })
+      .when('/signin', {
+        templateUrl: CONSTANTS.SIGN_IN_TEMPLATE_PATH,
+        controller: CONSTANTS.SIGN_IN_CONTROLLER,
+        controllerAs: CONSTANTS.SIGN_IN_CONTROLLER_AS_VIEW_MODEL
       })
       .otherwise({
         redirectTo: '/'
@@ -36,7 +38,7 @@
     LoopBackResourceProvider.setAuthHeader('X-Access-Token');
 
     // Change the URL where to access the LoopBack REST API server
-    LoopBackResourceProvider.setUrlBase(BASE_URL);
+    LoopBackResourceProvider.setUrlBase(CONSTANTS.BASE_URL);
   };
 
   angular.module('PersonalWebsite')
