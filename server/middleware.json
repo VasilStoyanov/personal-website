@@ -104,6 +104,12 @@
       },
       {
         "paths": [
+          "/libs"
+        ],
+        "params": "$!../node_modules/angular-messages/"
+      },
+      {
+        "paths": [
           "/files"
         ],
         "params": "$!../client/applicaton/"

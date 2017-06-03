@@ -9,5 +9,6 @@ angular.module('PersonalWebsite', [
     'ngRoute',
     'ngResource',
     'ngMaterial',
-    'lbServices'
+    'lbServices',
+    'ngMessages'
   ]);

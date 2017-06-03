@@ -1,5 +1,6 @@
 <md-content md-colors="{background: 'primary-200'}" layout="row" layout-align="center center" flex="100">
-  <md-card flex="80" flex-xs="100" md-whiteframe="8">
+  <md-card flex="50" flex-xs="100" md-whiteframe="8">
+
     <md-card-header layout layout-align="center center">
       <md-card-avatar>
         <md-user-avatar>
@@ -8,12 +9,34 @@
       </md-card-avatar>
     </md-card-header>
     <md-card-content>
-      <h2>Login</h2>
-      <p>Card content</p>
+
+      <md-input-container class="md-block">
+        <label>Email</label>
+        <input required md-no-asterisk name="description" ng-model="user.email">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Password</label>
+        <input required md-no-asterisk name="description" ng-model="project.password">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <div layout="row" layout-align="center center">
+
+        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary md-hue-2">
+          Remmember me
+        </md-checkbox>
+        <span flex></span>
+        <md-button class="md-raised md-primary md-hue-1">Login</md-button>
+      </div>
+
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
-      <md-button>Action 1</md-button>
-      <md-button class="md-primary md-raised">Action 2</md-button>
     </md-card-actions>
   </md-card>
 </md-content>
